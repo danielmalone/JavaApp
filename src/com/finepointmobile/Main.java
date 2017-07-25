@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Main extends Frame implements ActionListener {
 
@@ -33,6 +34,12 @@ public class Main extends Frame implements ActionListener {
         System.out.println(user.getFirstName());
 
         Main app = new Main();
+
+        try {
+            new URLReader();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
