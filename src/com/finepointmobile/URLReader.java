@@ -11,7 +11,7 @@ import java.net.URLConnection;
  */
 public class URLReader {
 
-    public URLReader() throws IOException {
+    public static String fetch() throws IOException {
         URL url = new URL("https://finepointmobile.com/");
 
         URLConnection connection = url.openConnection();
@@ -20,9 +20,9 @@ public class URLReader {
 
         String inputLine;
         while ((inputLine = reader.readLine()) != null) {
-            System.out.println(inputLine);
+            reader.close();
+            return inputLine;
         }
-
-        reader.close();
+        return null;
     }
 }

@@ -8,13 +8,21 @@ import java.io.IOException;
 
 public class Main extends Frame implements ActionListener {
 
+    private Label label;
+
     public Main() {
 
         setLayout(new FlowLayout());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        Label label = new Label("First name:");
-        add(label);
+        try {
+            String text = URLReader.fetch();
+            label = new Label(text);
+            add(label);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         Button button = new Button("Submit");
         button.addActionListener(this);
@@ -34,12 +42,6 @@ public class Main extends Frame implements ActionListener {
         System.out.println(user.getFirstName());
 
         Main app = new Main();
-
-        try {
-            new URLReader();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
