@@ -1,15 +1,28 @@
 package com.finepointmobile;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Main extends Frame {
+public class Main extends Frame implements ActionListener {
 
     public Main() {
+
         setLayout(new FlowLayout());
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         Label label = new Label("First name:");
         add(label);
-        setTitle("Daniel");
-        setSize(300, 300);
+
+        Button button = new Button("Submit");
+        button.addActionListener(this);
+        add(button);
+
+        TextField textField = new TextField("Welcome!");
+        add(textField);
+
+        setTitle("Fine Point Mobile | Software");
         setVisible(true);
     }
 
@@ -20,5 +33,10 @@ public class Main extends Frame {
         System.out.println(user.getFirstName());
 
         Main app = new Main();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("here");
     }
 }
